@@ -16,27 +16,27 @@ import com.example.tasks.entity.Tasks;
 import com.example.tasks.service.TaskService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class TaskController {
-	
+
 	@Autowired
 	private TaskService TaskServ;
-	
+
 	@GetMapping("/tasks")
-	public Collection<Tasks> getAllTasks(){
+	public Collection<Tasks> getAllTasks() {
 		return TaskServ.getAllTasks();
 	}
-	
+
 	@PostMapping("/tasks")
 	public void addTask(@RequestBody Tasks task) {
 		TaskServ.addTask(task);
 	}
-	
+
 	@PutMapping("/tasks/{id}/{status}")
 	public void updateTaskStatus(@PathVariable Integer id, @PathVariable String status) {
 		TaskServ.updateTaskStatus(id, status);
 	}
-	
+
 	@DeleteMapping("/tasks/{id}")
 	public void deleteStatus(@PathVariable Integer id) {
 		TaskServ.deleteTask(id);
